@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отправка заказа по ID</title>
+</head>
+<body>
+<a href="./send">Скрипт отправки сообщений</a>
+<h1>Получение заказа по ID</h1>
+<label for="id">ID заказа:</label>
+<input type="text" id="id">
+<button type="button" onclick="sendRequest()">Отправить</button>
+<div><code id="response"></code></div>
+
+<script>
+    function sendRequest() {
+        // получаем значение поля ввода
+        const id = document.getElementById('id').value;
+
+        // формируем JSON-объект
+        const data = {id: id};
+
+        // отправляем запрос на сервер
+        fetch('http://localhost:8080/GetOrder', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                // обновляем содержимое блока response
+                document.getElementById('response').innerHTML = JSON.stringify(data);
+            })
+            .catch(error => {
+                document.getElementById('response').innerHTML = "Объект " + id + " не найден";
+            });
+    }
+</script>
+</body>
+</html>
+

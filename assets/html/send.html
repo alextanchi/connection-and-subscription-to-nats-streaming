@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Send JSON via REST API</title>
+    <style>
+        input[type=text] {
+            width: 90%;
+            height: 70%;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <a href="..">Получение заказов по ID</a>
+    <h1>Создание заказов JSON</h1>
+    <label for="json-input">Введите JSON:</label>
+    <button type="button" onclick="sendJSON()">Отправить</button>
+    <div><code id="error-message"></code></div>
+    <br>
+    <textarea id="json-input" name="textComment"
+              style="padding-bottom:250px ;
+  font-size:16px;
+  height: 1024px;
+  width: 90%;"></textarea>
+
+</form>
+
+<script>
+    function sendJSON() {
+        const jsonInput = document.getElementById("json-input").value;
+        const url = "http://localhost:8080/CreateOrder";
+
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: jsonInput
+        })
+            .then(response => {
+                if (response.ok) {
+                    showErrorMessage("POST request successful!");
+                } else {
+                    showErrorMessage("Error: " + response.statusText);
+                }
+            })
+            .catch(error => {
+                showErrorMessage("Error: " + error.message);
+            });
+    }
+
+    function showErrorMessage(message) {
+        const errorMessageElement = document.getElementById("error-message");
+        errorMessageElement.innerText = message;
+        errorMessageElement.style.display = "block";
+
+    }
+</script>
+</body>
+</html>
