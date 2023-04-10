@@ -9,7 +9,7 @@ CREATE TABLE orders
     delivery_service   varchar      NOT NULL,
     shardkey           varchar      NOT NULL,
     sm_id              int4         NOT NULL,
-    date_created       varchar NOT NULL,
+    date_created       varchar      NOT NULL,
     oof_shard          varchar      NOT NULL,
     CONSTRAINT ordering_orders_pkey PRIMARY KEY (order_uid)
 );
@@ -70,41 +70,7 @@ CREATE TABLE items
         REFERENCES orders (order_uid) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
-SELECT O.order_uid,
-       O.track_number,
-       O.entry,
-       O.locale,
-       O.internal_signature,
-       O.customer_id,
-       O.delivery_service,
-       O.shardkey,
-       O.sm_id,
-       O.date_created,
-       O.oof_shard,
-       D.id,
-       D.name,
-       D.phone,
-       D.zip,
-       D.city,
-       D.address,
-       D.region,
-       D.email,
-       P.id,
-       P.transaction,
-       P.request_id,
-       P.currency,
-       P.provider,
-       P.amount,
-       P.payment_dt,
-       P.bank,
-       P.delivery_cost,
-       P.goods_total,
-       P.custom_fee
-FROM orders as O
-         JOIN delivery as D
-              ON D.order_id = O.order_uid
-         JOIN payment as P
-              ON P.order_id = O.order_uid;
+
 
 
 

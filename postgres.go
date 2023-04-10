@@ -100,8 +100,8 @@ func getOrders(db *sql.DB) ([]Order, error) {
 			"brand, \n" +
 			"status \n" +
 			"FROM items \n" +
-			"WHERE order_id = $1"
-
+			"WHERE order_id = $1" //вместо $1 "подставится"  id конкретного заказа
+		//второй параметр (order_uid в заказе с конкретным индексом) в функции db.Query соответствует плейсхолдеру $1
 		rows, err = db.Query(querySqlItems, orders[i].OrderUid)
 
 		if err != nil {
