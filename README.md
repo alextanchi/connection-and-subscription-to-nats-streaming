@@ -1,7 +1,7 @@
 ![image](https://github.com/alextanchi/wildberries_study/assets/123393302/8568576d-023d-486b-96b8-2e86667fa9b4)
 
 
-"# wildberries_study" 
+
 1. Запустить Docker. Он поднимет PostgreSQL и создаст необходимую БД. Также он подключается к nats.
 Для этого нужно перейти в терминал и прописать cd *путь к папке проекта*.
 Далее необходимо выполнить команду docker-compose up.(для остановки исполбзуем ctrl+c, для того чтобы "уронить" докер: docker-compose down)
