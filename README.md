@@ -1,3 +1,7 @@
+Учебное задание со стажировки Wildberries
+
+
+
 ![image](https://github.com/alextanchi/wildberries_study/assets/123393302/8568576d-023d-486b-96b8-2e86667fa9b4)
 
 
