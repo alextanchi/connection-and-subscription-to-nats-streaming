@@ -49,7 +49,7 @@ func main() {
 		//Получаем message data, делаем unmarshall с помощью структуры orders
 		// ошибка "получили неверные данные", расшифрованные данные сохраняем в cache
 
-		var order Order
+		var order Order //создаем экземпляр в который будем анмаршалить
 		if err := json.Unmarshal(msg.Data, &order); err != nil {
 			fmt.Println(err)
 			return
