@@ -89,7 +89,7 @@ func main() {
 		http.ServeFile(w, r, "assets/html/send.html")
 	})
 
-	server := &http.Server{
+	server := &http.Server{ //данные сервера 
 		Addr:           ":8080",
 		Handler:        router,
 		ReadTimeout:    10 * time.Second,
